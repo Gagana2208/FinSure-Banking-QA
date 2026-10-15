@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+allure-results/
+output.xml
+report.html
+log.html
+playwright-log.txt
+Browser/
+output/
+results/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
