@@ -1,26 +1,84 @@
 # FinSure Banking QA
 
-This project includes a lightweight local FinSure banking demo and a Robot Framework + Playwright login/logout automation suite.
+A small banking QA project that combines a lightweight local demo banking app with Robot Framework automation and Playwright-based browser testing.
+
+This repository demonstrates end-to-end login, logout, and dashboard validation flows using a realistic test automation setup.
+
+## Project overview
+
+- Local demo bank app served via Python HTTP server
+- Robot Framework test suite for browser-based validation
+- Browser library with Playwright backend
+- Gherkin-style BDD scenarios and page object structure
+- Bank of North demo variant included for alternate UI testing
+
+## Tech stack
+
+- Python
+- Robot Framework
+- Browser library
+- Playwright
+- GitHub Actions-ready automation structure
 
 ## Quick start
 
-1. Start the demo app:
-   `python start_banking_demo.py`
+1. Create and activate a virtual environment
 
-2. Run the login test:
-   `./.venv/Scripts/robot.exe ./tests/login_tests.robot`
+   ```bash
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
 
-   On Windows PowerShell:
-   `.\.venv\Scripts\robot.exe .\tests\login_tests.robot`
+2. Install dependencies
 
-3. Optional override for a different URL:
-   `$env:FINSURE_URL = 'http://127.0.0.1:3000'`
+   ```bash
+   pip install robotframework robotframework-browser
+   python -m Browser.install
+   ```
+
+3. Start the demo app
+
+   ```bash
+   python start_banking_demo.py
+   ```
+
+4. Run the test suite
+
+   ```bash
+   .\.venv\Scripts\robot.exe .\tests
+   ```
+
+5. Optional URL override
+
+   ```powershell
+   $env:FINSURE_URL = 'http://127.0.0.1:3000'
+   ```
 
 ## Demo credentials
 
 - Username: `testuser`
 - Password: `Passw0rd!`
 
+## Included demo apps
+
+- `banking_demo/` — FinSure banking demo
+- `bankofnorth_demo/` — alternate Bank of North banking demo
+
+## Test structure
+
+- `tests/banking_bdd.robot` — BDD scenarios
+- `tests/login_tests.robot` — login/logout validation
+- `tests/browser_test.robot` — browser smoke checks
+- `resources/pages/` — page object keywords
+- `resources/steps/` — BDD step definitions
+
+## Example commands
+
+```powershell
+.\.venv\Scripts\robot.exe .\tests\login_tests.robot
+.\.venv\Scripts\robot.exe -t "Logout Successfully" .\tests\login_tests.robot
+```
+
 ## Notes
 
-The browser test uses `Browser` library with Playwright locators and is compatible with the local demo app served on port 3000.
+This project is intended for learning, experimentation, and QA automation demos. The banking apps are local mock applications and are not connected to a real banking backend.
