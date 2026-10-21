@@ -1,5 +1,10 @@
 # FinSure Banking QA
 
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Robot Framework](https://img.shields.io/badge/Robot%20Framework-7.x-1d4ed8)](https://robotframework.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-Browser%20Automation-2EAD33)](https://playwright.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A small banking QA project that combines a lightweight local demo banking app with Robot Framework automation and Playwright-based browser testing.
 
 This repository demonstrates end-to-end login, logout, and dashboard validation flows using a realistic test automation setup.
