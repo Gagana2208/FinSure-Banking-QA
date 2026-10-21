@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  banking-demo:
+    build: .
+    container_name: finsure-banking-demo
+    ports:
+      - "3000:3000"
+    command: python start_banking_demo.py

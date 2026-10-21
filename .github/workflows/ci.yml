@@ -1,0 +1,46 @@
+name: Banking QA CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  robot-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m Browser.install
+
+      - name: Start demo banking app
+        run: |
+          python start_banking_demo.py > /tmp/finsure_demo.log 2>&1 &
+          sleep 5
+
+      - name: Run Robot tests
+        run: |
+          robot tests
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-test-artifacts
+          path: |
+            output.xml
+            log.html
+            report.html
+            /tmp/finsure_demo.log
